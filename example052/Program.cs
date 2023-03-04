@@ -53,10 +53,10 @@ int[,] FillMatrix(int[,] matrix, int min, int max) // Добавление сл�
     int columns = matrix.GetLength(1);
 
     for (int i = 0; i < lines; i++)
+
     {
         for (int j = 0; j < columns; j++)
         {
-
             matrix[i, j] = new Random().Next(min, max + 1);
         }
     }
@@ -70,6 +70,7 @@ void PrintMatrix(int[,] matrix) // Вывод матрицы.
     int columns = matrix.GetLength(1);
 
     for (int i = 0; i < lines; i++)
+
     {
         for (int j = 0; j < columns; j++)
         {
@@ -81,13 +82,15 @@ void PrintMatrix(int[,] matrix) // Вывод матрицы.
 
 double[] GetAverage(int[,] matrix)
 {
-    double[] arrayWithAverages = new double[matrix.GetLength(1)];
+    double[] arrayWithAverages = new double[matrix.GetLength(1)]; // Создание массива для записи результатов в нём.
     int index = 0;
     int sizeArray = arrayWithAverages.Length;
     double average = 0;
     int lines = matrix.GetLength(0);
     int columns = matrix.GetLength(1);
+
     while (index < sizeArray)
+
     {
         for (int i = 0; i < columns; i++)
         {
@@ -100,14 +103,18 @@ double[] GetAverage(int[,] matrix)
             average = 0;
         }
     }
+
     return arrayWithAverages;
 }
 
-void PrintArray(double [] array)
+void PrintArrayWithAverages(double[] array)
 {
-    for(int i = 0; i < array.Length; i++)
+    int count = 1;
+
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.Write($"{array[i]} ");
+        Console.WriteLine($"Cреднее арифметическое {count} столбца: {array[i]}");
+        count++;
     }
 }
 
@@ -122,5 +129,5 @@ Console.WriteLine("Получена матрица: ");
 PrintMatrix(FillMatrix(matrix, minimum, maximum));
 
 
-double [] arrayWithAverage = GetAverage(matrix);
-PrintArray(arrayWithAverage);
+double[] arrayWithAverage = GetAverage(matrix);
+PrintArrayWithAverages(arrayWithAverage);
